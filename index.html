@@ -1,0 +1,108 @@
+<!doctype html>
+<html lang="ru">
+  <head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Система персональной идентификации работников СЛИ</title>
+    <meta name="description" content="Проверка удостоверений работников, участвующих в техническом освидетельствовании лифтов.">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;600;700;800&family=PT+Serif:wght@700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="styles.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcodejs/1.0.0/qrcode.min.js" defer></script>
+    <script src="app.js" defer></script>
+  </head>
+  <body>
+    <header class="topbar">
+      <a class="brand" href="./" aria-label="Открыть реестр">
+        <span class="brand-mark">SLI</span>
+        <span>
+          <strong>Персональная идентификация</strong>
+          <small>техническое освидетельствование лифтов</small>
+        </span>
+      </a>
+      <nav class="topnav" aria-label="Разделы">
+        <a href="#registry">Реестр</a>
+        <a href="#journal">Мониторинг</a>
+        <a href="#rules">Порядок</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="verify-band" id="verify">
+        <div class="verify-copy">
+          <p class="eyebrow">Электронная проверка удостоверения</p>
+          <h1>Скан QR-кода подтверждает работника, статус удостоверения и квалификацию.</h1>
+          <p>
+            Удостоверение используется только для участия в техническом освидетельствовании лифтов.
+            Передача другому лицу запрещена.
+          </p>
+        </div>
+        <form class="search-panel" id="searchForm">
+          <label for="searchInput">ID, Ф.И.О. или номер сертификата</label>
+          <div class="search-row">
+            <input id="searchInput" name="q" type="search" autocomplete="off" placeholder="Например: ТО-0001 или 00837/2026">
+            <button type="submit">Проверить</button>
+          </div>
+          <div class="quick-list" id="quickList" aria-label="Быстрый выбор работника"></div>
+        </form>
+      </section>
+
+      <section class="result-section" aria-live="polite">
+        <div id="result"></div>
+      </section>
+
+      <section class="section" id="registry">
+        <div class="section-head">
+          <p class="eyebrow">Приложение N 2</p>
+          <h2>Реестр работников</h2>
+        </div>
+        <div class="toolbar">
+          <button class="tool-button" id="printSelected" type="button">Печать удостоверения</button>
+          <button class="tool-button" id="copyLink" type="button">Скопировать QR-ссылку</button>
+        </div>
+        <div class="registry-table-wrap">
+          <table class="registry-table">
+            <thead>
+              <tr>
+                <th>ID</th>
+                <th>Ф.И.О.</th>
+                <th>Должность</th>
+                <th>Сертификаты</th>
+                <th>Удостоверение</th>
+                <th>Срок</th>
+                <th>Статус</th>
+              </tr>
+            </thead>
+            <tbody id="registryRows"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <section class="section two-column" id="journal">
+        <div>
+          <p class="eyebrow">Приложения N 3 и N 4</p>
+          <h2>Журнал идентификации</h2>
+          <p class="muted">
+            Записи связывают работника с объектом, лифтом, датой, временем, видом освидетельствования и результатом.
+          </p>
+        </div>
+        <div class="journal-list" id="journalList"></div>
+      </section>
+
+      <section class="section rules" id="rules">
+        <p class="eyebrow">Контроль использования</p>
+        <h2>Алгоритм по Положению</h2>
+        <ol>
+          <li>Проверка документов работника, фотографии, квалификации и трудовых отношений.</li>
+          <li>Присвоение индивидуального ID формата ТО-XXXX и внесение в Реестр.</li>
+          <li>Выдача персонального удостоверения с QR-кодом и сроком действия.</li>
+          <li>При сканировании QR отображаются ID, Ф.И.О., должность, организация, статус и квалификация.</li>
+          <li>К работам допускается только работник со статусом «ДЕЙСТВУЕТ» и актуальными документами.</li>
+          <li>При утрате, увольнении, нарушении или окончании допуска удостоверение блокируется или аннулируется.</li>
+        </ol>
+      </section>
+    </main>
+
+  </body>
+</html>

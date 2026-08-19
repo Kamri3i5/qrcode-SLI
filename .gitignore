@@ -1,0 +1,19 @@
+# OS junk
+.DS_Store
+Thumbs.db
+
+# Editor
+.vscode/
+.idea/
+
+# Automation / browser profile dumps (Playwright, Puppeteer, etc.)
+_chrome-profile-*/
+*chrome-profile*/
+
+# Internal QA screenshots — not part of the published site
+_contact_sheet.jpg
+_page-check.png
+_mobile-check.png
+
+# Stray files without extensions / accidental duplicates
+K-48
